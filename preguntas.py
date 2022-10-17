@@ -28,9 +28,12 @@ def pregunta_01():
         names=____,
     )
 
+    df = pd.read_csv('amazon_cells_labelled.tsv',sep='\t',header=None,names=['msg','lbl'])
+
     # Separe los grupos de mensajes etiquetados y no etiquetados.
-    df_tagged = ____[____["____"].____()]
-    df_untagged = ____[____["____"].____()]
+    
+    df_tagged = df[(df["lbl"]>=0)]
+    df_untagged = df[(df["lbl"].isna())]
 
     x_tagged = ____["____"]
     y_tagged = ____["____"]
