@@ -21,12 +21,6 @@ def pregunta_01():
     # Lea el archivo `amazon_cells_labelled.tsv` y cree un DataFrame usando pandas.
     # Etiquete la primera columna como `msg` y la segunda como `lbl`. Esta función
     # retorna el dataframe con las dos columnas.
-    df = ____(
-        ____,
-        sep=____,
-        header=____,
-        names=____,
-    )
 
     df = pd.read_csv('amazon_cells_labelled.tsv',sep='\t',header=None,names=['msg','lbl'])
 
@@ -52,18 +46,19 @@ def pregunta_02():
     """
 
     # Importe train_test_split
-    from ____ import ____
+    
+    from sklearn.model_selection import traind_test_split
 
     # Cargue los datos generados en la pregunta 01.
-    x_tagged, y_tagged, _, _ = pregunta_01()
+    x_tagged, y_tagged, x_untagged, y_untagged = pregunta_01()
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 12345. Use el 10% de patrones para la muestra de prueba.
     x_train, x_test, y_train, y_test = train_test_split(
-        ____,
-        ____,
-        test_size=____,
-        random_state=____,
+        x_tagged,
+        y_tagged,
+        test_size=0.1,
+        random_state=12345,
     )
 
     # Retorne `X_train`, `X_test`, `y_train` y `y_test`
